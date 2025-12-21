@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Karnaugh Map Solver</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h1>Karnaugh Map Solver</h1>
+    <p class="subtitle">Truth Table → K-Map → Logic Simplification</p>
+</header>
+
+<main class="container">
+
+    <!-- HOW TO USE -->
+    <section class="help-section">
+        <h2>How to Use</h2>
+        <ol>
+            <li>Enter variable names separated by spaces (example: <b>A B C</b>).</li>
+            <li>Click <b>Generate Truth Table</b>.</li>
+            <li>Fill the Output column using only <b>0</b> or <b>1</b>.</li>
+            <li>Click <b>Solve</b> to process the truth table.</li>
+        </ol>
+        <p class="note">
+            ⚠️ This version captures and validates the truth table.
+            Boolean minimization (K-Map grouping / Quine–McCluskey) will be added next.
+        </p>
+    </section>
+
+    <!-- INPUT -->
+    <section class="input-section">
+        <label for="vars">Variables</label>
+        <input type="text" id="vars" placeholder="A B C D">
+        <button id="genBtn">Generate Truth Table</button>
+    </section>
+
+    <!-- TRUTH TABLE -->
+    <section class="output-section">
+        <h2>Truth Table</h2>
+        <div id="truthTable"></div>
+        <p class="hint">
+            Rows follow binary counting order: 000, 001, 010, ...
+        </p>
+        <button id="solveBtn" disabled>Solve</button>
+    </section>
+
+    <!-- ADVANCED OUTPUT (HIDDEN INITIALLY) -->
+    <section id="advanced" class="output-section hidden">
+        <h2>Result</h2>
+        <pre id="result"></pre>
+
+        <h2>K-Map</h2>
+        <img id="kmap" alt="K-Map will appear here">
+        <button onclick="exportKMap()">Export K-Map</button>
+        <div style="margin-bottom:10px;">
+            <button onclick="setMode('SOP')">SOP Mode</button>
+            <button onclick="setMode('POS')">POS Mode</button>
+        </div>  
+
+        <h2>Generated Verilog Code</h2>
+        <pre id="verilog"></pre>
+
+        <h2>Generated Verilog Testbench</h2>
+        <pre id="testbench"></pre>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
