@@ -117,6 +117,8 @@ def solve_truth():
         img_base64 = base64.b64encode(buf.read()).decode("utf-8")
         plt.close(fig)
 
+        
+        # ---- Verilog module + testbench ----
         # ---- Verilog module + testbench ----
         verilog_expr = expr_to_verilog(expr_str)
         inputs_csv = ", ".join(vars_list)
